@@ -1,0 +1,14 @@
+.profile__description {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+
+    grid-area: descrtiption;
+}
+
+@media (max-width: 1024px) {
+    .profile__description {
+        font-size: calc(14px + 4 * ((100vw - 320px) / 704))
+    }
+}

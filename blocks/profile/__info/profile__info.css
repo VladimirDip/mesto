@@ -1,0 +1,18 @@
+.profile__info {
+    grid-area: info;
+    margin-left: 30px;
+    display: grid;
+    justify-items: stretch;
+    align-items: center;
+    align-content: center;
+    grid-template-areas:
+        "main-name main-name main-name button"
+        "descrtiption descrtiption descrtiption. ";
+
+}
+
+@media (max-width: 756px) {
+    .profile__info {
+        margin: 0;
+    }
+}

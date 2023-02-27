@@ -1,0 +1,16 @@
+.profile__circle {
+    grid-area: image;
+
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    vertical-align: center;
+    display: inline-block;
+}
+
+@media (max-width: 756px) {
+    .profile__circle {
+        margin-bottom: 26px;
+    }
+}

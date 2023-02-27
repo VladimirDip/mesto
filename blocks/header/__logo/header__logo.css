@@ -1,0 +1,18 @@
+.header__logo {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+@media (max-width: 1024px) {
+    .header__logo {
+        max-width: calc(103.74px + 38.26 * ((100vw - 320px) / 256));
+    }
+
+}
+
+@media (max-width: 320px) {
+    .header__logo {
+        margin-left: 27px
+    }
+
+}

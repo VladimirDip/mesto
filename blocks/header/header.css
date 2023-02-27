@@ -1,0 +1,15 @@
+.header {
+    padding-bottom: 40px;
+    max-width: var(--main-width-container);
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: var(--color-grey) solid 1px;
+}
+
+
+@media (max-width: 320px) {
+    .header {
+
+    }
+
+}

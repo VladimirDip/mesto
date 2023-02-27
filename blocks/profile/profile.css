@@ -1,0 +1,23 @@
+.profile {
+    max-width: var(--main-width-container);
+    display: grid;
+    align-items: center;
+    grid-template-columns: [image] min-content [info] max-content [empty] auto [add-button] min-content [end];
+    grid-template-areas:
+        "image info . add";
+}
+
+@media (max-width: 756px) {
+    .profile {
+        max-width: var(--mobile-width-container);
+        grid-template-columns: [main] 1fr [end];
+        justify-items: center;
+
+        grid-template-areas:
+            "image"
+            "info"
+            "add";
+    }
+
+
+}

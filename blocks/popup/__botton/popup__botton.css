@@ -1,0 +1,13 @@
+.popup__button {
+    color: var(--text-color);
+    background-color: var(--color-black);
+    border: none;
+    min-height: 50px;
+    padding: 0;
+}
+
+@media (max-width: 756px) {
+    .popup__button {
+        min-height: calc(46px + 4 * ((100vw - 320px) / 436));
+    }
+}

@@ -1,0 +1,18 @@
+.popup__input-label {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+
+
+    border: 0;
+    border-bottom: var(--under-line) solid 1px;
+    padding: 0 0 10px;
+    margin-bottom: 30px;
+    width: 100%;
+
+
+}
+
+.popup__input-label:nth-last-of-type(2) {
+    margin-bottom: 48px;
+}

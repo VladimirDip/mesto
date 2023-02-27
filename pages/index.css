@@ -23,3 +23,14 @@
 @import url('../blocks/profile/__description/profile__description.css');
 @import url('../blocks/profile/__edit/profile__edit.css');
 @import url('../blocks/profile/__add/profile__add.css');
+
+
+
+/*Popup*/
+@import url('../blocks/popup/popup.css');
+@import url('../blocks/popup/__container/popup__container.css');
+@import url('../blocks/popup/__title/popup__title.css');
+@import url('../blocks/popup/__form/popup__form.css');
+@import url('../blocks/popup/__input-field/popup__input-field.css');
+@import url('../blocks/popup/__input-label/popup__input-label.css');
+@import url('../blocks/popup/__botton/popup__botton.css');

@@ -3,6 +3,7 @@
     font-family: 'Inter', Arial, sans-serif;
     font-weight: 400;
     font-size: 18px;
+    max-width: 400px;
 
     grid-area: descrtiption;
 }

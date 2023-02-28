@@ -2,7 +2,7 @@
     max-width: var(--main-width-container);
     display: grid;
     align-items: center;
-    grid-template-columns: [image] min-content [info] max-content [empty] auto [add-button] min-content [end];
+    grid-template-columns: [image] min-content [info] max-content [empty] auto [add-button] max-content [end];
     grid-template-areas:
         "image info . add";
 }

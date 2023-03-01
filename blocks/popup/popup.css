@@ -12,4 +12,6 @@
     justify-content: center;
     align-items: center;
     transition: opacity .8s;
+    cursor: pointer;
+
 }

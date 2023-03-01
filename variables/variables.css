@@ -2,11 +2,9 @@
     --color-black: #000;
     --color-white: #fff;
     --color-grey: #545454;
-
     --main-width-container: 880px;
     --mobile-width-container: 282px;
-
     --bg-color: var(--color-black);
     --text-color: var(--color-white);
-    --under-line: rgba(0, 0, 0, .2)
+    --under-line: rgba(0, 0, 0, .2);
 }

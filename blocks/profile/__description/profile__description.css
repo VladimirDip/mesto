@@ -14,6 +14,6 @@
 
 @media (max-width: 1024px) {
     .profile__description {
-        font-size: calc(14px + 4 * ((100vw - 320px) / 704))
+        font-size: calc(14px + 4 * ((100vw - 320px) / 704));
     }
 }

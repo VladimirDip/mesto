@@ -1,0 +1,9 @@
+.card__like {
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
+    z-index: 33;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}

@@ -1,57 +1,122 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="./pages/index.css" rel="stylesheet">
-  <title>Mesto</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="./pages/index.css" rel="stylesheet">
+    <title>Mesto</title>
 </head>
 <body class="page">
 <div class="page__container">
-  <header class="header page__header">
-    <img class="header__logo" src="./images/Logo.svg" alt="Логотип">
-  </header>
-  <main class="main">
-    <section class="profile page__profile">
-      <div class="profile__circle">
-        <img class="profile__avatar"
-             src="./images/profile_image.png"
-             alt="Аватар профиля"></div>
+    <header class="header page__header">
+        <img class="header__logo" src="./images/Logo.svg" alt="Логотип">
+    </header>
+    <main class="main">
+        <section class="profile page__profile">
+            <div class="profile__circle">
+                <img class="profile__avatar"
+                     src="./images/profile_image.png"
+                     alt="Аватар профиля"></div>
 
-      <div class="profile__info">
-        <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <div class="profile__info">
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
 
-        <p class="profile__description">Исследователь океана</p>
+                <p class="profile__description">Исследователь океана</p>
 
-        <button class="profile__edit" type="button"></button>
-      </div>
+                <button class="profile__edit" type="button"></button>
+            </div>
 
-      <button class="profile__add"></button>
-    </section>
-    <section class="cards page__cards">
+            <button class="profile__add"></button>
+        </section>
+        <section class="cards page__cards">
+            <div class="card">
+                <img src="./images/card-1.jpg"
+                     alt="Старая полуразрушеная церковь"
+                     class="card__image">
 
-    </section>
-  </main>
-  <footer class="footer"></footer>
+                <h2 class="card__title">Карачаевск</h2>
+
+                <img src="./images/like.svg"
+                     alt="Лайк для картинки"
+                     class="card__like">
+            </div>
+            <div class="card">
+                <img src="./images/card-2.jpg"
+                     alt="Закат в пустыне"
+                     class="card__image">
+
+                <h2 class="card__title">Гора Эльбрус</h2>
+
+                <img src="./images/like.svg"
+                     alt="Лайк для картинки"
+                     class="card__like">
+            </div>
+            <div class="card">
+                <img src="./images/card-3.jpg"
+                     alt="Заснежанная гора на переднемм плане лес"
+                     class="card__image">
+
+                <h2 class="card__title">Домбай</h2>
+
+                <img src="./images/like.svg"
+                     alt="Лайк для картинки"
+                     class="card__like">
+            </div>
+            <div class="card">
+                <img src="./images/card-4.jpg"
+                     alt="Пустыня и закат"
+                     class="card__image">
+
+                <h2 class="card__title">Гора Эльбрус</h2>
+
+                <img src="./images/like.svg"
+                     alt="Лайк для картинки"
+                     class="card__like">
+            </div>
+            <div class="card">
+                <img src="./images/card-5.jpg"
+                     alt="Гора с лесом на переднем плане снимка"
+                     class="card__image">
+
+                <h2 class="card__title">Карачаевск</h2>
+
+                <img src="./images/like.svg"
+                     alt="Лайк для картинки"
+                     class="card__like">
+            </div>
+            <div class="card">
+                <img src="./images/card-6.jpg"
+                     alt="Старая полуразрушеная церковь"
+                     class="card__image">
+
+                <h2 class="card__title">Карачаевск sdfvs d shgs d asd gsdg asg as as </h2>
+
+                <img src="./images/like.svg"
+                     alt="Лайк для картинки"
+                     class="card__like">
+            </div>
+        </section>
+    </main>
+    <footer class="footer"></footer>
 </div>
 <div class="popup">
-  <div class="popup__container">
-    <h2 class="popup__title">Редактировать профиль</h2>
+    <div class="popup__container">
+        <h3 class="popup__title">Редактировать профиль</h3>
 
-    <form class="popup__form" action="" method="get">
-      <label class="popup__input-field" for="name"></label>
-      <input class="popup__input-label" type="text" name="name" id="name" placeholder="Введите имя">
+        <form class="popup__form" action="" method="get">
+            <label class="popup__input-field" for="name"></label>
+            <input class="popup__input-label" type="text" name="name" id="name" placeholder="Введите имя">
 
-      <label class="popup__input-field" for="description"></label>
-      <input class="popup__input-label" type="text" name="description" id="description"
-             placeholder="Введите описание">
+            <label class="popup__input-field" for="description"></label>
+            <input class="popup__input-label" type="text" name="description" id="description"
+                   placeholder="Введите описание">
 
-      <input class="popup__button" type="submit" value="Сохранить">
-    </form>
-    <div class="popup__close"></div>
-  </div>
+            <input class="popup__button" type="submit" value="Сохранить">
+        </form>
+        <div class="popup__close"></div>
+    </div>
 </div>
 <script src="./scripts/scripts.js"></script>
 </body>

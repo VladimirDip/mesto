@@ -11,13 +11,9 @@
 
 }
 
+
 @media (max-width: 756px) {
     .profile__info {
-        /*margin: 0;*/
-        align-items: center;
-        align-content: center;
         justify-items: center;
-
-
     }
 }

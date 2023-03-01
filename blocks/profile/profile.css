@@ -1,5 +1,5 @@
 .profile {
-    max-width: var(--main-width-container);
+    /*max-width: var(--main-width-container);*/
     display: grid;
     align-items: center;
     grid-template-columns: [image] min-content [info] max-content [empty] auto [add-button] max-content [end];
@@ -9,7 +9,7 @@
 
 @media (max-width: 756px) {
     .profile {
-        max-width: var(--mobile-width-container);
+        /*max-width: var(--mobile-width-container);*/
         grid-template-columns: [main] 1fr [end];
         justify-items: center;
 

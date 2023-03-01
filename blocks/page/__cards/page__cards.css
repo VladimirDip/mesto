@@ -1,3 +1,9 @@
 .page__cards {
-    margin: 50px auto 66px;
+    margin: 50px auto 68px;
+}
+
+@media (max-width: 320px) {
+    .page__cards {
+        margin: 36px auto 48px;
+    }
 }

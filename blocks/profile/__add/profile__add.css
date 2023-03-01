@@ -9,11 +9,6 @@
 
 }
 
-.profile__add:hover {
-    opacity: .6;
-}
-
-
 @media (max-width: 756px) {
     .profile__add {
         width: auto;

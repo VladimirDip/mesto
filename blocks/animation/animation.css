@@ -1,0 +1,11 @@
+.animation {
+    transition: opacity .2s ease-in-out;
+}
+
+
+@media (any-pointer: fine) {
+    .animation:hover {
+        opacity: .6;
+    }
+
+}

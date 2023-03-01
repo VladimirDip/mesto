@@ -1,0 +1,12 @@
+.main {
+    max-width: var(--main-width-container);
+    margin: 0 auto;
+}
+
+
+@media (max-width: 756px) {
+    .main {
+        max-width: var(--mobile-width-container);
+    }
+
+}

@@ -4,7 +4,11 @@
     font-weight: 500;
     font-size: 42px;
     line-height: 114.3%;
-    max-width: 500px;
+    max-width: 336px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 
     grid-area: main-name;
 }

@@ -2,13 +2,19 @@
     background: transparent url("../../../images/profile__info_button.svg") center no-repeat;
     width: 24px;
     height: 24px;
-    margin-left: 16px;
+    margin-left: 18px;
     border: 1px solid var(--color-white);
     cursor: pointer;
 
     grid-area: button;
 }
 
-.profile__edit:hover {
-    opacity: .6;
+@media (max-width: 320px) {
+    .profile__edit {
+        margin-left: 10px;
+        width: 18px;
+        height: 18px;
+
+    }
+
 }

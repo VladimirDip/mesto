@@ -3,77 +3,51 @@ const popElem = document.querySelector('.popup')
 const popClose = document.querySelector('.popup__close')
 const submitFormButton = document.querySelector('.popup__button')
 
-let classesPopUp = popElem.classList
 let formElement = document.querySelector('.popup__form')
 
 let nameInput = formElement.querySelector('input[name="name"]')
 let descriptionInput = formElement.querySelector('input[name="description"]')
 
+let profileName = document.querySelector('.profile__name');
+let profileDescription = document.querySelector('.profile__description');
 
+let profileNameText = document.querySelector('.profile__name').textContent;
+let profileDescriptionText = document.querySelector('.profile__description').textContent;
+
+
+//handler is working with form
 const handlerFormSubmit = (evt) => {
     evt.preventDefault();
 
     let nameInputValue = nameInput.value;
     let descriptionInputValue = descriptionInput.value;
 
-    if (validateSubmitForm()) {
-        let profileName = document.querySelector('.profile__name');
-        let profileDescription = document.querySelector('.profile__description');
+    profileName.textContent = nameInputValue;
+    profileDescription.textContent = descriptionInputValue;
 
-        profileName.textContent = nameInputValue;
-        profileDescription.textContent = descriptionInputValue;
-
-    }
+    closePopUp()
 }
 
 
-const closePopUp = event => {
-    const target = event.target;
-    if (target === popElem || target === popClose || target === submitFormButton) {
-        classesPopUp.remove('popup_active');
-    }
+const closePopUp = () => {
+    popElem.classList.remove('popup_opened');
 }
 
 
 const openPopUp = () => {
     putInPopUp();
 
-    if (classesPopUp.contains('popup_active')) {
-        classesPopUp.remove('popup_active');
-    } else {
-        classesPopUp.add('popup_active');
-    }
+    popElem.classList.toggle('popup_opened')
+
 }
 
-
+//get text from HTML and put in form
 const putInPopUp = () => {
-    if (isEmptyFieldForm()) {
-        let profileName = document.querySelector('.profile__name').textContent;
-        let profileDescription = document.querySelector('.profile__description').textContent;
-
-        nameInput.value = profileName;
-        descriptionInput.value = profileDescription;
-    } else {
-        return false
-    }
-}
-
-
-const isEmptyFieldForm = () => {
-    return nameInput.value.length === 0 && descriptionInput.value.length === 0
-}
-
-
-const validateSubmitForm = () => {
-    if (isEmptyFieldForm()) {
-        alert('Вы не ввели значения');
-        return false
-    } else {
-        return true
-    }
+    nameInput.value = profileNameText;
+    descriptionInput.value = profileDescriptionText;
 }
 
 
 buttonElem.addEventListener('click', openPopUp);
-popElem.addEventListener('click', closePopUp);
+popClose.addEventListener('click', closePopUp);
 formElement.addEventListener('submit', handlerFormSubmit);

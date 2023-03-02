@@ -1,9 +1,12 @@
 .card__image {
     object-fit: cover;
-    max-height: 100%;
-    max-width: 100%;
+    min-height: 282px;
+    max-width: 282px;
+    width: 100%;
+    height: auto;
     border-radius: 10px 10px 0 0;
     grid-area: image;
     align-self: center;
+    text-align: center;
 
 }

@@ -1,6 +1,6 @@
 /*Vendor*/
-@import url('../variables/variables.css');
 @import url('../vendor/normalize.css');
+@import url('../variables/variables.css');
 @import url('../vendor/fonts/fonts.css');
 /*Animation*/
 @import url('../blocks/animation/animation.css');
@@ -28,13 +28,13 @@
 @import url('../blocks/profile/__add/profile__add.css');
 /*Popup*/
 @import url('../blocks/popup/popup.css');
-@import url('../blocks/popup/_active/popup_active.css');
+@import url('../blocks/popup/_opened/popup_opened.css');
 @import url('../blocks/popup/__container/popup__container.css');
 @import url('../blocks/popup/__title/popup__title.css');
 @import url('../blocks/popup/__form/popup__form.css');
 @import url('../blocks/popup/__input-field/popup__input-field.css');
-@import url('../blocks/popup/__input-label/popup__input-label.css');
-@import url('../blocks/popup/__botton/popup__botton.css');
+@import url('../blocks/popup/__input-form/popup__input-form.css');
+@import url('../blocks/popup/__button/popup__button.css');
 @import url('../blocks/popup/__close/popup__close.css');
 /*Cards*/
 @import url('../blocks/cards/cards.css');
@@ -46,3 +46,4 @@
 @import url('../blocks/card/__like/_active/card__like_active.css');
 /*Footer*/
 @import url('../blocks/footer/footer.css');
+@import url('../blocks/footer/__title/footer__title.css');

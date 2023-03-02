@@ -7,5 +7,5 @@
     --bg-color: var(--color-black);
     --text-color: var(--color-white);
     --under-line: rgba(0, 0, 0, .2);
-    --unde-line-header: rgba(84, 84, 84, .7)
+    --unde-line-header: rgba(84, 84, 84, .7);
 }

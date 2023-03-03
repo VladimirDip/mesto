@@ -1,7 +1,6 @@
 const buttonElem = document.querySelector('.profile__edit');
 const popElem = document.querySelector('.popup')
 const popClose = document.querySelector('.popup__close')
-const submitFormButton = document.querySelector('.popup__button')
 
 let formElement = document.querySelector('.popup__form')
 
@@ -10,9 +9,6 @@ let descriptionInput = formElement.querySelector('input[name="description"]')
 
 let profileName = document.querySelector('.profile__name');
 let profileDescription = document.querySelector('.profile__description');
-
-let profileNameText = document.querySelector('.profile__name').textContent;
-let profileDescriptionText = document.querySelector('.profile__description').textContent;
 
 
 //handler is working with form
@@ -43,8 +39,9 @@ const openPopUp = () => {
 
 //get text from HTML and put in form
 const putInPopUp = () => {
-    nameInput.value = profileNameText;
-    descriptionInput.value = profileDescriptionText;
+
+    nameInput.value = profileName.textContent;
+    descriptionInput.value = profileDescription.textContent;
 }
 
 

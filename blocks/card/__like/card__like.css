@@ -10,6 +10,10 @@
     grid-area: button;
 }
 
+.card__like:hover {
+    opacity: .5;
+}
+
 .card__like:focus {
     /*outline-color: var(--color-grey);*/
     box-shadow: 0 0 0 3px var(--color-grey);

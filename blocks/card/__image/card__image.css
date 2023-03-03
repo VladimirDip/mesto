@@ -1,9 +1,9 @@
 .card__image {
     object-fit: cover;
-    min-height: 282px;
+    max-height: 282px;
     max-width: 282px;
     width: 100%;
-    height: auto;
+    height: 100%;
     border-radius: 10px 10px 0 0;
     grid-area: image;
     align-self: center;

@@ -6,6 +6,7 @@
     padding: 0;
     cursor: pointer;
     font-size: 18px;
+    line-height: 1.22;
     border-radius: 2px;
 }
 
@@ -17,5 +18,6 @@
 @media (max-width: 756px) {
     .popup__button {
         min-height: 46px;
+        font-size: 14px;
     }
 }

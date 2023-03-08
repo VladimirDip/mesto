@@ -93,7 +93,7 @@
 </div>
 <div class="popup edit-profile-popup" data-target="button-edit-profile">
   <div class="popup__container" id="edit-profile">
-    <h3 class="popup__title">Редактировать профиль</h3>
+    <h3 class="popup__title-image">Редактировать профиль</h3>
 
     <form class="popup__form" name="popup-edit-profile" action="#" method="get">
       <label class="popup__input-field" for="name"></label>
@@ -113,7 +113,7 @@
 
 <div class="popup new-card-popup" data-target="button-add-new-card">
   <div class="popup__container" id="new-card">
-    <h3 class="popup__title">Новое место</h3>
+    <h3 class="popup__title-image">Новое место</h3>
 
     <form class="popup__form" name="popup-add-new-card" action="#" method="get">
       <label class="popup__input-field" for="name"></label>
@@ -131,11 +131,19 @@
   </div>
 </div>
 
+<div class="popup open-image" data-target="button-open-image">
+  <div class="popup__container popup__container_images" id="open-image">
+    <img class="popup__image" src="#" alt="#">
+    <p class="popup__title-image"></p>
+    <button class="popup__close" type="button"></button>
+  </div>
+</div>
+
 
 <template id="card">
   <article class="card">
     <button class="card__delete animation" type="button"></button>
-    <img class="card__image" src="" alt="">
+    <img class="card__image" src="#" alt="#">
     <h2 class="card__title"></h2>
     <button class="card__like animation"></button>
   </article>

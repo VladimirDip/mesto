@@ -1,15 +1,18 @@
 .card {
     background-color: var(--color-white);
     color: var(--color-black);
-    min-width: 282px;
-    min-height: 361px;
+    width: 282px;
+    height: 361px;
     border-radius: 10px;
     display: grid;
     grid-template-areas:
         "image image image"
-        "title . button";
+        "title title button";
     grid-template-rows: min-content auto;
     align-items: center;
+
+    position: relative;
+
 
 
 

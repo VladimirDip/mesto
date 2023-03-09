@@ -65,8 +65,8 @@ initialCards.forEach((item) => {
 const handlerFormSubmitProfile = (evt) => {
     evt.preventDefault();
 
-    let nameInputValue = nameInput.value;
-    let descriptionInputValue = descriptionInput.value;
+    const nameInputValue = nameInput.value;
+    const descriptionInputValue = descriptionInput.value;
 
     profileName.textContent = nameInputValue;
     profileDescription.textContent = descriptionInputValue;
@@ -78,7 +78,7 @@ const handlerFormSubmitProfile = (evt) => {
 const handlerFormSubmitAddNewCard = (evt) => {
     evt.preventDefault();
     //write a new card and then prepend
-    let newDataFromForm = {};
+    const newDataFromForm = {};
     newDataFromForm['name'] = placeInput.value;
     newDataFromForm['link'] = linkInput.value;
     const newCardFromForm = createCard(newDataFromForm)
@@ -141,13 +141,13 @@ cardsBlock.addEventListener('click', (e) => {
         e.target.classList.toggle('card__like_active');
     }
     if (hasClass(e.target, 'card__delete')) {
-        const parentDeleteButton = e.target.parentNode;
+        const parentDeleteButton = e.target.closest('.card');
         parentDeleteButton.remove();
     }
     if (hasClass(e.target, 'card__image')) {
         //get elements from card into HTML
         const getImages = e.target.getAttribute('src');
-        const getTitle = e.target.parentNode.querySelector('.card__title').textContent;
+        const getTitle = e.target.closest('.card').querySelector('.card__title').textContent;
         const getImagesAlt = e.target.getAttribute('alt');
         // console.log(getImages, getTitle, getImagesAlt)
 

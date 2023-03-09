@@ -3,14 +3,19 @@ const cardsBlock = document.querySelector('.cards');
 const buttonsForOpenPopUp = document.querySelectorAll('[data-button]');
 const buttonsClosePopUp = document.querySelectorAll('.popup__close');
 
-let formElementEditProfile = document.querySelector('[name="popup-edit-profile"]');
-let formElementNewCard = document.querySelector('[name="popup-add-new-card"]');
+const formElementEditProfile = document.querySelector('[name="popup-edit-profile"]');
+const descriptionInput = formElementEditProfile.querySelector('input[name="description"]');
 
-let nameInput = formElementEditProfile.querySelector('input[name="name"]');
-let descriptionInput = formElementEditProfile.querySelector('input[name="description"]');
-let profileName = document.querySelector('.profile__name');
-let profileDescription = document.querySelector('.profile__description');
+const nameInput = formElementEditProfile.querySelector('input[name="name"]');
+const formElementNewCard = document.querySelector('[name="popup-add-new-card"]');
+const placeInput = formElementNewCard.querySelector('input[name="name"]');
+const linkInput = formElementNewCard.querySelector('input[name="link-image"]');
+const profileName = document.querySelector('.profile__name');
+const profileDescription = document.querySelector('.profile__description');
 
+const popUpOpenImage = document.querySelector('.open-image');
+const imagePopUp = popUpOpenImage.querySelector('.popup__image');
+const titlePopUp = popUpOpenImage.querySelector('.popup__title-image');
 
 //array cards
 const initialCards = [
@@ -39,17 +44,22 @@ const initialCards = [
         link: 'https://images.unsplash.com/photo-1678048632412-f18bbbd3662a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
     },
 ]
-
-//fill page new cards from array only. It isn't main logic
-initialCards.forEach((item) => {
+//create a new card
+const createCard = (item) => {
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
 
     cardElement.querySelector('.card__image').src = item.link;
     cardElement.querySelector('.card__image').alt = item.name;
     cardElement.querySelector('.card__title').textContent = item.name;
+    return cardElement
+}
 
-    cardsBlock.append(cardElement);
+//fill page new cards from array only. It isn't main logic
+initialCards.forEach((item) => {
+    const newCard = createCard(item)
+    cardsBlock.append(newCard)
 });
+
 
 //handler is working with profile form
 const handlerFormSubmitProfile = (evt) => {
@@ -64,41 +74,35 @@ const handlerFormSubmitProfile = (evt) => {
     closePopUp();
 }
 
-const placeInput = formElementNewCard.querySelector('input[name="name"]');
-const linkInput = formElementNewCard.querySelector('input[name="link-image"]');
-
-
 //handler is working with add-new-card form
 const handlerFormSubmitAddNewCard = (evt) => {
     evt.preventDefault();
     //write a new card and then prepend
-    const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
-    cardElement.querySelector('.card__image').src = linkInput.value;
-    cardElement.querySelector('.card__image').alt = placeInput.value;
-    cardElement.querySelector('.card__title').textContent = placeInput.value;
-    cardsBlock.prepend(cardElement);
-    //update inputs before last operation
-    linkInput.value = linkInput.querySelector('[aria-placeholder]');
-    placeInput.value = placeInput.querySelector('[aria-placeholder]');
+    let newDataFromForm = {};
+    newDataFromForm['name'] = placeInput.value;
+    newDataFromForm['link'] = linkInput.value;
+    const newCardFromForm = createCard(newDataFromForm)
+    cardsBlock.prepend(newCardFromForm);
+
+    //update inputs after last operation
+    evt.target.reset()
 
     closePopUp();
 }
 
 const closePopUp = () => {
-    let targetPopUp = document.querySelector('.popup_opened')
-    targetPopUp.classList.remove('popup_opened');
+    const targetPopUp = document.querySelector('.popup_opened')
+    if (targetPopUp) {
+        targetPopUp.classList.remove('popup_opened');
+    }
 }
 
-const openPopUp = (targetElement) => {
-    console.log(targetElement)
-    if (targetElement.classList.contains('edit-profile-popup')) {
-        GetTextFromPageToPopUp();
-    }
-    targetElement.classList.toggle('popup_opened');
+const openPopUp = (popup) => {
+    popup.classList.add('popup_opened');
 }
 
 //get text from HTML and put in form
-const GetTextFromPageToPopUp = () => {
+const getTextFromPageToPopUp = () => {
     nameInput.value = profileName.textContent;
     descriptionInput.value = profileDescription.textContent;
 }
@@ -106,21 +110,16 @@ const GetTextFromPageToPopUp = () => {
 //open the popup which placed on button
 buttonsForOpenPopUp.forEach((el) => {
     el.addEventListener('click', (e) => {
-        let dataButton = e.currentTarget.getAttribute('data-button');
-        let popup = document.querySelector(`[data-target="${dataButton}"]`);
+        const dataButton = e.currentTarget.getAttribute('data-button');
+        const popup = document.querySelector(`[data-target="${dataButton}"]`);
+        getTextFromPageToPopUp();
         openPopUp(popup);
     })
 })
 
-//close the popup which have 'popup_opened' class
-buttonsClosePopUp.forEach((el) => {
-    el.addEventListener('click', (e) => {
-        const currentPopUp = e.currentTarget.parentElement.parentElement
-        if (currentPopUp.classList.contains('popup_opened')) {
-            console.log(currentPopUp);
-            closePopUp(currentPopUp);
-        }
-    })
+
+buttonsClosePopUp.forEach((button) => {
+    button.addEventListener('click', closePopUp);
 })
 
 //--------------listeners----------------//
@@ -129,41 +128,28 @@ formElementNewCard.addEventListener('submit', handlerFormSubmitAddNewCard);
 //--------------end listeners----------------//
 
 
-//--------------like post----------------//
+//--------------check to include className into element----------------//
 const hasClass = (elem, className) => {
     return elem.className.split(' ').indexOf(className) > -1;
 }
+//--------------end check to include className into element----------------//
 
-document.addEventListener('click', function (e) {
+
+//--------------like, delete open a card----------------//
+cardsBlock.addEventListener('click', (e) => {
     if (hasClass(e.target, 'card__like')) {
         e.target.classList.toggle('card__like_active');
     }
-});
-//--------------end like post----------------//
-
-
-//--------------delete card----------------//
-document.addEventListener('click', function (e) {
     if (hasClass(e.target, 'card__delete')) {
-        let parentDeleteButton = e.target.parentNode;
+        const parentDeleteButton = e.target.parentNode;
         parentDeleteButton.remove();
     }
-})
-//--------------end delete card----------------//
-
-//--------------Popup with images----------------//
-document.addEventListener('click', function (e) {
     if (hasClass(e.target, 'card__image')) {
         //get elements from card into HTML
-        let getImages = e.target.getAttribute('src');
-        let getTitle = e.target.parentNode.querySelector('.card__title').textContent;
-        let getImagesAlt = e.target.getAttribute('alt')
+        const getImages = e.target.getAttribute('src');
+        const getTitle = e.target.parentNode.querySelector('.card__title').textContent;
+        const getImagesAlt = e.target.getAttribute('alt');
         // console.log(getImages, getTitle, getImagesAlt)
-
-        //get element from popup
-        let popUpOpenImage = document.querySelector('.open-image');
-        let imagePopUp = popUpOpenImage.querySelector('.popup__image');
-        let titlePopUp = popUpOpenImage.querySelector('.popup__title-image');
 
         //write data to popup
         imagePopUp.src = getImages;
@@ -172,6 +158,5 @@ document.addEventListener('click', function (e) {
 
         openPopUp(popUpOpenImage);
     }
-});
-//--------------end popup with images----------------//
-
+})
+//--------------end like, delete open a card----------------//

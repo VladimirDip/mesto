@@ -23,6 +23,8 @@ const popUpOpenImage = document.querySelector('.open-image');
 const imagePopUp = popUpOpenImage.querySelector('.popup__image');
 const titlePopUp = popUpOpenImage.querySelector('.popup__title-image');
 
+const popUpContainer = document.querySelector('.wrapper-popup');
+
 //array cards
 const initialCards = [
   {
@@ -79,6 +81,12 @@ const handlerFormSubmitProfile = (evt) => {
   closePopUp();
 };
 
+//--------------check to include className into element----------------//
+const hasClass = (elem, className) => {
+  return elem.className.split(' ').indexOf(className) > -1;
+};
+//--------------end check to include className into element----------------//
+
 //handler is working with add-new-card form
 const handlerFormSubmitAddNewCard = (evt) => {
   evt.preventDefault();
@@ -95,8 +103,16 @@ const handlerFormSubmitAddNewCard = (evt) => {
   closePopUp();
 };
 
+const keyHandler = (evt) => {
+  if (evt.key === 'Escape') {
+    // console.log('click');
+    closePopUp();
+  }
+};
+
 const closePopUp = () => {
   const targetPopUp = document.querySelector('.popup_opened');
+  document.removeEventListener('keydown', keyHandler);
   if (targetPopUp) {
     targetPopUp.classList.remove('popup_opened');
   }
@@ -117,25 +133,37 @@ buttonsForOpenPopUp.forEach((el) => {
   el.addEventListener('click', (e) => {
     const dataButton = e.currentTarget.getAttribute('data-button');
     const popup = document.querySelector(`[data-target="${dataButton}"]`);
+    document.addEventListener('keydown', keyHandler);
     getTextFromPageToPopUp();
     openPopUp(popup);
   });
 });
 
-buttonsClosePopUp.forEach((button) => {
+/*buttonsClosePopUp.forEach((button) => {
+  const parentButton = button.closest('.popup');
+  parentButton.addEventListener('keydown', (evt) => {
+    console.log(evt.key);
+  });
+  parentButton.addEventListener('click', closePopUp);
   button.addEventListener('click', closePopUp);
+});*/
+
+popUpContainer.addEventListener('click', (evt) => {
+  // console.log(evt.target);
+  if (
+    evt.target.classList.contains('popup__close') ||
+    evt.target.classList.contains('popup_opened')
+  ) {
+    closePopUp();
+  }
 });
+
+popUpContainer.addEventListener('keydown', keyHandler);
 
 //--------------listeners----------------//
 formElementEditProfile.addEventListener('submit', handlerFormSubmitProfile);
 formElementNewCard.addEventListener('submit', handlerFormSubmitAddNewCard);
 //--------------end listeners----------------//
-
-//--------------check to include className into element----------------//
-const hasClass = (elem, className) => {
-  return elem.className.split(' ').indexOf(className) > -1;
-};
-//--------------end check to include className into element----------------//
 
 //--------------like, delete open a card----------------//
 cardsBlock.addEventListener('click', (e) => {

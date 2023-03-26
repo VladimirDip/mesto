@@ -1,6 +1,6 @@
 .card__like {
     padding: 0;
-    margin: 0;
+    margin: 0 20px 0 0;
     border: none;
     cursor: pointer;
     border-radius: 3px;
@@ -8,7 +8,8 @@
     width: 22px;
     height: 19px;
     grid-area: button;
-    justify-self: center;
+    justify-self: flex-end;
+
 }
 
 .card__like:hover {

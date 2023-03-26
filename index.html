@@ -1,109 +1,144 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="./pages/index.css" rel="stylesheet">
-  <title>Mesto</title>
-</head>
-<body class="page">
-<div class="page__container">
-  <header class="header page__header">
-    <img class="header__logo" src="./images/Logo.svg" alt="Логотип">
-  </header>
-  <main class="main">
-    <section class="profile page__profile">
-      <img class="profile__avatar"
-           src="./images/profile_image.png"
-           alt="Аватар профиля">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="./pages/index.css" rel="stylesheet" />
+    <title>Mesto</title>
+  </head>
+  <body class="page">
+    <div class="page__container">
+      <header class="header page__header">
+        <img class="header__logo" src="./images/Logo.svg" alt="Логотип" />
+      </header>
+      <main class="main">
+        <section class="profile page__profile">
+          <img
+            class="profile__avatar"
+            src="./images/profile_image.png"
+            alt="Аватар профиля" />
 
-      <div class="profile__info">
-        <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <div class="profile__info">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
 
-        <p class="profile__description">Исследователь океана</p>
+            <p class="profile__description">Исследователь океана</p>
 
-        <button class="profile__edit animation" aria-label="edit profile"
-                type="button" data-button="button-edit-profile"></button>
+            <button
+              class="profile__edit animation"
+              aria-label="edit profile"
+              type="button"
+              data-button="button-edit-profile"></button>
+          </div>
+
+          <button
+            class="profile__add-new-card animation"
+            type="button"
+            data-button="button-add-new-card"></button>
+        </section>
+        <section class="cards page__cards" aria-label="articles">
+          <article class="card">
+            <button class="card__delete animation" type="button"></button>
+            <img
+              class="card__image"
+              src="./images/card-1.jpg"
+              alt="Старая полуразрушеная церковь" />
+
+            <h2 class="card__title">Карачаевск</h2>
+
+            <button class="card__like animation" type="button"></button>
+          </article>
+        </section>
+      </main>
+      <footer class="footer page__footer">
+        <p class="footer__title">© 2023 Mesto Russia</p>
+      </footer>
+    </div>
+    <div class="popup edit-profile-popup" data-target="button-edit-profile">
+      <div class="popup__container" id="edit-profile">
+        <h3 class="popup__title">Редактировать профиль</h3>
+
+        <form
+          class="popup__form"
+          name="popup-edit-profile"
+          action="#"
+          method="get">
+          <label class="popup__input-field" for="name"></label>
+          <input
+            class="popup__input-form"
+            required
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Введите имя" />
+
+          <label class="popup__input-field" for="description"></label>
+          <input
+            class="popup__input-form"
+            required
+            type="text"
+            name="description"
+            id="description"
+            placeholder="Введите описание" />
+
+          <input class="popup__button" type="submit" value="Сохранить" />
+        </form>
+        <button class="popup__close" type="button"></button>
       </div>
+    </div>
 
-      <button class="profile__add-new-card animation" type="button" data-button="button-add-new-card"></button>
-    </section>
-    <section class="cards page__cards" aria-label="articles">
+    <div class="popup new-card-popup" data-target="button-add-new-card">
+      <div class="popup__container" id="new-card">
+        <h3 class="popup__title">Новое место</h3>
+
+        <form
+          class="popup__form"
+          name="popup-add-new-card"
+          action="#"
+          method="get">
+          <label class="popup__input-field" for="name"></label>
+          <input
+            class="popup__input-form"
+            required
+            type="text"
+            name="name"
+            id="named-place"
+            placeholder="Название" />
+
+          <label class="popup__input-field" for="link"></label>
+          <input
+            class="popup__input-form"
+            required
+            type="text"
+            name="link-image"
+            id="link"
+            placeholder="Ссылка на картинку" />
+
+          <input class="popup__button" type="submit" value="Сохранить" />
+        </form>
+        <button class="popup__close" type="button"></button>
+      </div>
+    </div>
+
+    <div class="popup open-image" data-target="button-open-image">
+      <div class="popup__container popup__container_images" id="open-image">
+        <img class="popup__image" src="#" alt="#" />
+        <p class="popup__title-image"></p>
+        <button class="popup__close" type="button"></button>
+      </div>
+    </div>
+
+    <template id="card">
       <article class="card">
         <button class="card__delete animation" type="button"></button>
-        <img class="card__image"
-             src="./images/card-1.jpg"
-             alt="Старая полуразрушеная церковь">
-
-        <h2 class="card__title">Карачаевск</h2>
-
-        <button class="card__like animation" type="button"></button>
+        <img class="card__image" src="#" alt="#" />
+        <h2 class="card__title"></h2>
+        <button class="card__like animation"></button>
       </article>
-    </section>
-  </main>
-  <footer class="footer page__footer">
-    <p class="footer__title">© 2023 Mesto Russia</p></footer>
-</div>
-<div class="popup edit-profile-popup" data-target="button-edit-profile">
-  <div class="popup__container" id="edit-profile">
-    <h3 class="popup__title">Редактировать профиль</h3>
+    </template>
 
-    <form class="popup__form" name="popup-edit-profile" action="#" method="get">
-      <label class="popup__input-field" for="name"></label>
-      <input class="popup__input-form" required type="text" name="name" id="name"
-             placeholder="Введите имя">
-
-      <label class="popup__input-field" for="description"></label>
-      <input class="popup__input-form" required type="text" name="description"
-             id="description"
-             placeholder="Введите описание">
-
-      <input class="popup__button" type="submit" value="Сохранить">
-    </form>
-    <button class="popup__close" type="button"></button>
-  </div>
-</div>
-
-<div class="popup new-card-popup" data-target="button-add-new-card">
-  <div class="popup__container" id="new-card">
-    <h3 class="popup__title">Новое место</h3>
-
-    <form class="popup__form" name="popup-add-new-card" action="#" method="get">
-      <label class="popup__input-field" for="name"></label>
-      <input class="popup__input-form" required type="text" name="name" id="named-place"
-             placeholder="Название">
-
-      <label class="popup__input-field" for="link"></label>
-      <input class="popup__input-form" required type="text" name="link-image"
-             id="link"
-             placeholder="Ссылка на картинку">
-
-      <input class="popup__button" type="submit" value="Сохранить">
-    </form>
-    <button class="popup__close" type="button"></button>
-  </div>
-</div>
-
-<div class="popup open-image" data-target="button-open-image">
-  <div class="popup__container popup__container_images" id="open-image">
-    <img class="popup__image" src="#" alt="#">
-    <p class="popup__title-image"></p>
-    <button class="popup__close" type="button"></button>
-  </div>
-</div>
-
-
-<template id="card">
-  <article class="card">
-    <button class="card__delete animation" type="button"></button>
-    <img class="card__image" src="#" alt="#">
-    <h2 class="card__title"></h2>
-    <button class="card__like animation"></button>
-  </article>
-</template>
-
-<script src="scripts/index.js"></script>
-</body>
+    <script src="scripts/index.js"></script>
+  </body>
 </html>

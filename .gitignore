@@ -80,7 +80,7 @@ fabric.properties
 
 .DS_Store
 Thumbs.db
-
+.*
 *.log*
 node_modules/
 dist

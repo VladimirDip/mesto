@@ -1,0 +1,9 @@
+.popup__input-error {
+    display:none;
+    opacity: 0;
+    color: var(--color-red);
+    margin: 5px 0 0;
+    max-width: 358px;
+
+
+}

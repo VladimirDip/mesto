@@ -3,5 +3,9 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 1;
+    margin-bottom: 30px;
 }
 
+.popup__input-field:nth-last-of-type(1) {
+    margin-bottom: 48px;
+}

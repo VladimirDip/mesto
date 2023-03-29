@@ -1,7 +1,7 @@
 const cardTemplate = document.querySelector('#card').content;
 const cardsBlock = document.querySelector('.cards');
 const buttonsForOpenPopUp = document.querySelectorAll('[data-button]');
-const buttonsClosePopUp = document.querySelectorAll('.popup__close');
+// const buttonsClosePopUp = document.querySelectorAll('.popup__close');
 
 const formElementEditProfile = document.querySelector(
   '[name="popup-edit-profile"]'
@@ -119,6 +119,7 @@ const closePopUp = () => {
 };
 
 const openPopUp = (popup) => {
+  document.addEventListener('keydown', keyHandler);
   popup.classList.add('popup_opened');
 };
 
@@ -127,29 +128,34 @@ const getTextFromPageToPopUp = () => {
   nameInput.value = profileName.textContent;
   descriptionInput.value = profileDescription.textContent;
 };
+getTextFromPageToPopUp();
 
-//open the popup which placed on button
+//--------------wrapped all the buttons for listener----------------//
 buttonsForOpenPopUp.forEach((el) => {
   el.addEventListener('click', (e) => {
     const dataButton = e.currentTarget.getAttribute('data-button');
     const popup = document.querySelector(`[data-target="${dataButton}"]`);
-    document.addEventListener('keydown', keyHandler);
+    const currentInputsFormPopUp = Array.from(
+      popup.querySelectorAll('.popup__input-form')
+    );
+    const popupForm = popup.querySelector('.popup__form');
+
+    const currentButtonPopUp = popup.querySelector('.popup__button');
+    // console.log(el);
+    hideAllInputError(popupForm, currentInputsFormPopUp, configSelectors);
     getTextFromPageToPopUp();
+    toggleButtonState(
+      currentInputsFormPopUp,
+      currentButtonPopUp,
+      configSelectors
+    );
     openPopUp(popup);
   });
 });
+//--------------end wrapped all the buttons for listener----------------//
 
-/*buttonsClosePopUp.forEach((button) => {
-  const parentButton = button.closest('.popup');
-  parentButton.addEventListener('keydown', (evt) => {
-    console.log(evt.key);
-  });
-  parentButton.addEventListener('click', closePopUp);
-  button.addEventListener('click', closePopUp);
-});*/
-
+//--------------listeners----------------//
 popUpContainer.addEventListener('click', (evt) => {
-  // console.log(evt.target);
   if (
     evt.target.classList.contains('popup__close') ||
     evt.target.classList.contains('popup_opened')
@@ -157,10 +163,6 @@ popUpContainer.addEventListener('click', (evt) => {
     closePopUp();
   }
 });
-
-popUpContainer.addEventListener('keydown', keyHandler);
-
-//--------------listeners----------------//
 formElementEditProfile.addEventListener('submit', handlerFormSubmitProfile);
 formElementNewCard.addEventListener('submit', handlerFormSubmitAddNewCard);
 //--------------end listeners----------------//

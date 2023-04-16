@@ -39,7 +39,7 @@
             data-button="button-add-new-card"></button>
         </section>
         <section class="cards page__cards" aria-label="articles">
-          <article class="card">
+          <!--<article class="card">
             <button class="card__delete animation" type="button"></button>
             <img
               class="card__image"
@@ -49,7 +49,7 @@
             <h2 class="card__title">Карачаевск</h2>
 
             <button class="card__like animation" type="button"></button>
-          </article>
+          </article>-->
         </section>
       </main>
       <footer class="footer page__footer">
@@ -155,11 +155,15 @@
         <button class="card__delete animation" type="button"></button>
         <img class="card__image" src="#" alt="#" />
         <h2 class="card__title"></h2>
-        <button class="card__like animation"></button>
+        <button class="card__like animation" type="button"></button>
       </article>
     </template>
 
-    <script src="scripts/index.js"></script>
+    <script type='module' src="scripts/variables.js"></script>
+    <script type='module' src="scripts/card.js"></script>
+    <script type='module' src="scripts/indexTest.js"></script>
+
+<!--    <script src="scripts/index.js"></script>-->
     <script src="scripts/validate.js"></script>
   </body>
 </html>

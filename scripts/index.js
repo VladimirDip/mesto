@@ -137,30 +137,6 @@ const getTextFromPageToPopUp = () => {
 };
 getTextFromPageToPopUp();
 
-//--------------wrapped all the buttons for listener----------------//
-/*buttonsForOpenPopUp.forEach((el) => {
-  el.addEventListener('click', (e) => {
-    const dataButton = e.currentTarget.getAttribute('data-button');
-    const popup = document.querySelector(`[data-target="${dataButton}"]`);
-    const currentInputsFormPopUp = Array.from(
-      popup.querySelectorAll('.popup__input-form')
-    );
-    const popupForm = popup.querySelector('.popup__form');
-
-    const currentButtonPopUp = popup.querySelector('.popup__button');
-    // console.log(el);
-    hideAllInputError(popupForm, currentInputsFormPopUp, configSelectors);
-    getTextFromPageToPopUp();
-    toggleButtonState(
-      currentInputsFormPopUp,
-      currentButtonPopUp,
-      configSelectors
-    );
-    openPopUp(popup);
-  });
-});*/
-//--------------end wrapped all the buttons for listener----------------//
-
 //--------------Open popup Edit Profile----------------//
 buttonEditProfile.addEventListener('click', () => {
   const popupEditProfile = document.querySelector(
@@ -223,6 +199,7 @@ formElementNewCard.addEventListener('submit', handlerFormSubmitAddNewCard);
 
 //--------------like, delete open a card----------------//
 cardsBlock.addEventListener('click', (e) => {
+  console.log(e.target);
   if (hasClass(e.target, 'card__like')) {
     e.target.classList.toggle('card__like_active');
   }

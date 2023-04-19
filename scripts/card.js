@@ -40,19 +40,6 @@ export default class Card {
   _handleOpenImagePopup = (evt) => {
     this._cardObject = { name: evt.target.alt, link: evt.target.src };
     this._popUpOpenImage(this._cardObject);
-
-    /*const getImages = evt.target.getAttribute('src');
-    const getTitle = evt.target
-      .closest('.card')
-      .querySelector('.card__title').textContent;
-    const getImagesAlt = evt.target.getAttribute('alt');
-
-    //write data to popup
-    imagePopUp.src = getImages;
-    imagePopUp.alt = getImagesAlt;
-    titlePopUp.textContent = getTitle;
-    setTimeout(this._popUpOpenImage, 300, popUpOpenImage);
-    // this._popUpOpenImage(popUpOpenImage);*/
   };
 
   _setEventListenerCards() {

@@ -1,6 +1,6 @@
 export default class Card {
-  constructor(cardObject, templateSelector, popUpOpenImage) {
-    this._cardObject = cardObject;
+  constructor(cardData, templateSelector, popUpOpenImage) {
+    this._cardData = cardData;
     this._templateSelector = templateSelector;
     this._popUpOpenImage = popUpOpenImage;
   }
@@ -19,10 +19,10 @@ export default class Card {
     this._deleteImageButton = this._element.querySelector('.card__delete');
     this._imageTarget = this._element.querySelector('.card__image');
 
-    this._imageTarget.src = this._cardObject.link;
-    this._imageTarget.alt = this._cardObject.name;
+    this._imageTarget.src = this._cardData.link;
+    this._imageTarget.alt = this._cardData.name;
     this._element.querySelector('.card__title').textContent =
-      this._cardObject.name;
+      this._cardData.name;
 
     this._setEventListenerCards();
     return this._element;
@@ -38,8 +38,8 @@ export default class Card {
   };
 
   _handleOpenImagePopup = (evt) => {
-    this._cardObject = { name: evt.target.alt, link: evt.target.src };
-    this._popUpOpenImage(this._cardObject);
+    this._cardData = { name: evt.target.alt, link: evt.target.src };
+    this._popUpOpenImage(this._cardData);
   };
 
   _setEventListenerCards() {

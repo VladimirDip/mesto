@@ -32,3 +32,9 @@ export const buttonNewCard = document.querySelector(
   '[data-button="button-add-new-card"]'
 );
 export const formElements = document.querySelectorAll('.popup__form');
+export const popupEditProfile = document.querySelector(
+  `[data-target="button-edit-profile"]`
+);
+export const popupNewCard = document.querySelector(
+  `[data-target="button-add-new-card"]`
+);

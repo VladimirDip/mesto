@@ -1,6 +1,5 @@
 export const configSelectors = {
   inputSelector: 'popup__input-form',
-  // formSelector: 'popup__form',
   inputErrorClass: 'popup__input-form_type_error',
   submitButtonSelector: 'popup__button',
   inactiveButtonClass: 'popup__button_inactive',
@@ -19,66 +18,24 @@ export class FormValidator {
     );
   }
 
-  _hideAllInputError() {
-    this._inputList.forEach((inputElement) => {
-      const errorElement = this._formElement.querySelector(
-        `.${inputElement.id}-input-error`
-      );
-      // console.log(inputElement.validity.valid);
-      inputElement.classList.remove(`${this._validatorConfig.inputErrorClass}`);
-      errorElement.textContent = '';
-      errorElement.classList.remove(`${this._validatorConfig.errorClass}`);
-    });
-  }
-
-  _showInputError(inputElement) {
-    // this._inputList.forEach((inputElement) => {
-    //   // console.log(inputElement.id);
-    //   const errorElement = this._formElement.querySelector(
-    //     `.${inputElement.id}-input-error`
-    //   );
-    //   // console.log(errorElement.classList);
-    //   inputElement.classList.add(`${this._validatorConfig.inputErrorClass}`);
-    //   errorElement.textContent = inputElement.validationMessage;
-    //   // console.log(errorElement.textContent);
-    //   errorElement.classList.add(`${this._validatorConfig.errorClass}`);
-    //   console.log(nameInput.value);
-    //
-    //   console.log('сюда зашло ', inputElement.value);
-    // });
-
-    const errorElement = this._formElement.querySelector(
-      `.${inputElement.id}-input-error`
-    );
-
+  _showInputError() {
     // console.log(errorElement.classList);
-    inputElement.classList.add(`${this._validatorConfig.inputErrorClass}`);
-    errorElement.textContent = inputElement.validationMessage;
+    this._inputElement.classList.add(this._validatorConfig.inputErrorClass);
+    this._errorElement.textContent = this._inputElement.validationMessage;
     // console.log(errorElement.textContent);
-    errorElement.classList.add(`${this._validatorConfig.errorClass}`);
+    this._errorElement.classList.add(this._validatorConfig.errorClass);
   }
 
-  _hideInputError(inputElement) {
-    // this._inputList.forEach((inputElement) => {
-    //   const errorElement = this._formElement.querySelector(
-    //     `.${inputElement.id}-input-error`
-    //   );
-    //   inputElement.classList.remove(`${this._validatorConfig.inputErrorClass}`);
-    //   errorElement.classList.remove(`${this._validatorConfig.errorClass}`);
-    //   errorElement.textContent = '';
-    // });
-
-    const errorElement = this._formElement.querySelector(
-      `.${inputElement.id}-input-error`
-    );
-    inputElement.classList.remove(`${this._validatorConfig.inputErrorClass}`);
-    errorElement.classList.remove(`${this._validatorConfig.errorClass}`);
-    errorElement.textContent = '';
+  _hideInputError() {
+    // console.log(this._inputElement.classList);
+    this._inputElement.classList.remove(this._validatorConfig.inputErrorClass);
+    this._errorElement.classList.remove(this._validatorConfig.errorClass);
+    this._errorElement.textContent = '';
   }
 
   _hasInvalidInput() {
     return this._inputList.some((inputElement) => {
-      console.log(!inputElement.validity.valid, ' -has invalid');
+      // console.log(!inputElement.validity.valid, ' -has invalid');
       return !inputElement.validity.valid;
     });
   }
@@ -98,40 +55,42 @@ export class FormValidator {
     }
   }
 
-  _checkInputValidity(inputElement) {
-    // this._inputList.forEach((inputElement) => {
-    //   if (!inputElement.validity.valid) {
-    //     this._showInputError();
-    //     console.log(inputElement, ' THis');
-    //   } else {
-    //     this._hideInputError();
-    //   }
-    // });
-
-    if (!inputElement.validity.valid) {
-      this._showInputError(inputElement);
+  _checkInputValidity() {
+    this._errorElement = this._formElement.querySelector(
+      `.${this._inputElement.id}-input-error`
+    );
+    // console.log(this._errorElement);
+    if (!this._inputElement.validity.valid) {
+      this._showInputError();
     } else {
-      this._hideInputError(inputElement);
+      this._hideInputError();
     }
   }
-  /*Если мы не передаем inputElement то,
-   появляется баг при валидации, что текст ошибки затираеться. Мы не можем взять
-   именно не валидный инпут через this._*/
+
   _setEventListener() {
     // console.log(this._buttonElement);
-
     this._toggleButtonState();
-
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
-        this._checkInputValidity(inputElement);
+        this._inputElement = inputElement;
+        // console.log(this._inputElement);
+        this._checkInputValidity();
         this._toggleButtonState();
       });
     });
   }
 
   resetValidation() {
-    this._hideAllInputError();
+    this._inputList.forEach((inputElement) => {
+      this._inputElement = inputElement;
+      this._errorElement = this._formElement.querySelector(
+        `.${this._inputElement.id}-input-error`
+      );
+
+      if (!inputElement.validity.valid) {
+        this._hideInputError();
+      }
+    });
     this._toggleButtonState();
   }
 

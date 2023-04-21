@@ -36,6 +36,7 @@ formElements.forEach((item) => {
   const name = item.getAttribute('name');
   form.enableValidation();
   forms[name] = form;
+  // console.log(form);
 });
 // console.log(forms);
 
@@ -44,8 +45,8 @@ const checkOpenPopup = () => {
 };
 
 const closeByEscape = (evt) => {
-  const targetOpenPopup = checkOpenPopup();
   if (evt.key === 'Escape') {
+    const targetOpenPopup = checkOpenPopup();
     // console.log('click');
     closePopUp(targetOpenPopup);
   }
@@ -121,8 +122,8 @@ getTextFromPageToPopUp();
 
 //--------------Open popup Edit Profile----------------//
 buttonEditProfile.addEventListener('click', () => {
+  // console.log(forms);
   forms['popup-edit-profile'].resetValidation();
-
   openPopUp(popupEditProfile);
 });
 //-------------- end Open popup Edit Profile----------------//

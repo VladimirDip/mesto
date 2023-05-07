@@ -21,5 +21,19 @@
   },
   "dependencies": {
     "core-js": "^3.30.2"
-  }
+  },
+  "name": "mesto",
+  "description": "В этом проекте мы учимся работать с JavaScript и продолжаем познавать верстку",
+  "version": "1.0.0",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VladimirDip/mesto.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VladimirDip/mesto/issues"
+  },
+  "homepage": "https://github.com/VladimirDip/mesto#readme"
 }

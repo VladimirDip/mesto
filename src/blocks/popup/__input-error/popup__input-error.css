@@ -4,6 +4,10 @@
     color: var(--color-red);
     margin: 5px 0 0;
     max-width: 358px;
+    position: absolute;
+    padding: 0;
+    line-height: 14.5px;
+    font-size: 12px;
 
 
 }

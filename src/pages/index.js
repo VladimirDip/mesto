@@ -1,11 +1,13 @@
-import Card from './scripts/components/Card.js';
-import PopupWithImage from './scripts/components/PopupWithImage.js';
-import Section from './scripts/components/Section.js';
-import UserInfo from './scripts/components/UserInfo.js';
-import PopupWithForm from './scripts/components/PopupWithForm.js';
-import FormValidator from './scripts/components/FormValidator.js';
+import './index.css';
 
-import { initialCards } from './scripts/data.js';
+import Card from '../scripts/components/Card.js';
+import PopupWithImage from '../scripts/components/PopupWithImage.js';
+import Section from '../scripts/components/Section.js';
+import UserInfo from '../scripts/components/UserInfo.js';
+import PopupWithForm from '../scripts/components/PopupWithForm.js';
+import FormValidator from '../scripts/components/FormValidator.js';
+
+import { initialCards } from '../scripts/data.js';
 import {
   buttonEditProfile,
   buttonNewCard,
@@ -18,7 +20,7 @@ import {
   cardsBlockSelector,
   popupAddNewCardSelector,
   forms,
-} from './scripts/utils/variables.js';
+} from '../scripts/utils/variables.js';
 
 const userInfo = new UserInfo(dataInfo);
 const popupImage = new PopupWithImage(popupImageSelector);

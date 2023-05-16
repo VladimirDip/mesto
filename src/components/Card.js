@@ -1,9 +1,10 @@
 export default class Card {
-  constructor(cardData, templateSelector, popUpOpenImage) {
+  constructor(cardData, templateSelector, popUpOpenImage, handlerDeleteClick) {
     this._cardData = cardData;
     // console.log(this._cardData);
     this._templateSelector = templateSelector;
     this._popUpOpenImage = popUpOpenImage;
+    this._handlerDeleteClick = handlerDeleteClick;
   }
 
   _getTemplate() {
@@ -27,29 +28,27 @@ export default class Card {
     return this._element;
   };
 
-  /*_handleLikeClick = (evt) => {
-    evt.target.classList.toggle('card__like_active');
-  };*/
-
   _handleLikeClick = () => {
     this._likeTarget.classList.toggle("card__like_active");
   };
 
-  _handleDeleteButton = (evt) => {
-    const parentDeleteButton = evt.target.closest(".card");
-    parentDeleteButton.remove();
-  };
+  // _handleDeleteButton = (evt) => {
+  //   console.log(evt);
+  //   const parentDeleteButton = evt.target.closest(".card");
+  //   parentDeleteButton.remove();
+  // };
 
-  _handleOpenImagePopup = (evt) => {
-    this._cardData = { name: evt.target.alt, link: evt.target.src };
+  _handleOpenImagePopup = () => {
+    this._cardData = { name: this._cardData.name, link: this._cardData.link };
 
     this._popUpOpenImage(this._cardData);
   };
 
   _setEventListenerCards() {
     this._likeTarget.addEventListener("click", () => this._handleLikeClick());
-    this._deleteImageButton.addEventListener("click", (e) =>
-      this._handleDeleteButton(e)
+
+    this._deleteImageButton.addEventListener("click", (evt) =>
+      this._handlerDeleteClick(evt)
     );
 
     this._imageTarget.addEventListener("click", this._handleOpenImagePopup);

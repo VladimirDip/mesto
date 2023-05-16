@@ -1,0 +1,10 @@
+.popup__delete_inactive {
+    background: transparent;
+    outline: 2px solid #c4c4c4;
+    color: #c4c4c4;
+}
+
+.popup__delete_inactive:hover {
+    cursor: unset;
+    opacity: unset;
+}

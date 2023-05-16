@@ -4,21 +4,31 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Mesto</title>
   </head>
   <body class="page">
     <div class="page__container">
       <header class="header page__header">
-        <img class="header__logo" src="<%=require('./images/Logo.svg')%>" alt="Логотип" />
+        <img
+          class="header__logo"
+          src="<%=require('./images/Logo.svg')%>"
+          alt="Логотип"
+        />
       </header>
       <main class="main">
         <section class="profile page__profile">
-          <img
-            class="profile__avatar"
-            src="<%=require('./images/profile_image.png')%>"
-            alt="Аватар профиля" />
+          <div class="profile__avatar-wrapper">
+            <img
+              class="profile__avatar"
+              src="<%=require('./images/profile_image.png')%>"
+              alt="Аватар профиля"
+            />
+
+            <div class="profile__update-avatar"></div>
+          </div>
 
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -29,16 +39,17 @@
               class="profile__edit animation"
               aria-label="edit profile"
               type="button"
-              data-button="button-edit-profile"></button>
+              data-button="button-edit-profile"
+            ></button>
           </div>
 
           <button
             class="profile__add-new-card animation"
             type="button"
-            data-button="button-add-new-card"></button>
+            data-button="button-add-new-card"
+          ></button>
         </section>
-        <section class="cards page__cards" aria-label="articles">
-        </section>
+        <section class="cards page__cards" aria-label="articles"></section>
       </main>
       <footer class="footer page__footer">
         <p class="footer__title">© 2023 Mesto Russia</p>
@@ -55,7 +66,8 @@
             name="popup-edit-profile"
             action="#"
             method="get"
-            novalidate>
+            novalidate
+          >
             <label class="popup__input-field" for="name">
               <input
                 class="popup__input-form"
@@ -65,7 +77,8 @@
                 id="name"
                 placeholder="Введите имя"
                 maxlength="40"
-                minlength="2" />
+                minlength="2"
+              />
               <span class="popup__input-error name-input-error"></span>
             </label>
 
@@ -78,7 +91,8 @@
                 id="description"
                 placeholder="Введите описание"
                 maxlength="200"
-                minlength="2" />
+                minlength="2"
+              />
               <span class="popup__input-error description-input-error"></span>
             </label>
 
@@ -98,7 +112,8 @@
             name="popup-add-new-card"
             action="#"
             method="get"
-            novalidate>
+            novalidate
+          >
             <label class="popup__input-field" for="name">
               <input
                 class="popup__input-form"
@@ -108,7 +123,8 @@
                 id="named-place"
                 placeholder="Название"
                 maxlength="30"
-                minlength="2" />
+                minlength="2"
+              />
               <span class="popup__input-error named-place-input-error"></span>
             </label>
 
@@ -119,12 +135,52 @@
                 type="url"
                 name="link"
                 id="link"
-                placeholder="Ссылка на картинку(https://example.com)" />
+                placeholder="Ссылка на картинку(https://example.com)"
+              />
               <span class="popup__input-error link-input-error"></span>
             </label>
 
             <input class="popup__button" type="submit" value="Сохранить" />
           </form>
+          <button class="popup__close" type="button"></button>
+        </div>
+      </div>
+
+      <div class="popup update-avatar" data-target="button-update-avatar">
+        <div class="popup__container" id="update-avatar">
+          <h3 class="popup__title">Обновить аватар</h3>
+
+          <form
+            class="popup__form"
+            name="popup-update-avatar"
+            action="#"
+            method="get"
+            novalidate
+          >
+            <label class="popup__input-field" for="link">
+              <input
+                class="popup__input-form"
+                required
+                type="url"
+                name="avatar_link"
+                id="avatar-link"
+                placeholder="Ссылка на картинку(https://example.com)"
+              />
+              <span class="popup__input-error avatar-link-input-error"></span>
+            </label>
+
+            <input class="popup__button" type="submit" value="Сохранить" />
+          </form>
+          <button class="popup__close" type="button"></button>
+        </div>
+      </div>
+
+      <div class="popup delete-image" data-target="button-delete-image">
+        <div class="popup__container" id="delete-image">
+          <h3 class="popup__title">Вы уверены?</h3>
+
+          <button class="popup__delete" type="button">Да</button>
+
           <button class="popup__close" type="button"></button>
         </div>
       </div>

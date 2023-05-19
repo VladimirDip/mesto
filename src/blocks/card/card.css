@@ -9,6 +9,7 @@
         "image image image"
         "title title button";
     grid-template-rows: min-content auto;
+    grid-template-columns:   2fr 2fr 1fr ;
     align-items: center;
 
     position: relative;

@@ -187,7 +187,7 @@
 
       <div class="popup open-image" data-target="button-open-image">
         <div class="popup__container popup__container_images" id="open-image">
-          <img class="popup__image" src="#" alt="#" />
+          <img class="popup__image" src="<%=require('./images/profile_image.png')%>" alt="#" />
           <p class="popup__title-image"></p>
           <button class="popup__close" type="button"></button>
         </div>
@@ -195,14 +195,21 @@
     </div>
     <template id="card">
       <article class="card">
-        <button class="card__delete animation" type="button"></button>
-        <img class="card__image" src="#" alt="#" />
+        <button
+          class="card__delete card__delete_hidden animation"
+          type="button"
+        ></button>
+        <img class="card__image" src="<%=require('./images/profile_image.png')%>" alt="#" />
         <h2 class="card__title"></h2>
-        <button class="card__like animation" type="button"></button>
+        <div class="card__like-wrapper">
+          <button class="card__like animation" type="button"></button>
+          <p class="card__like-count"></p>
+        </div>
       </article>
     </template>
 
     <script type="module" src="utils/variables.js"></script>
+    <script type="module" src="utils/utils.js"></script>
     <script type="module" src="components/Card.js"></script>
     <script type="module" src="pages/index.js"></script>
     <script type="module" src="components/FormValidator.js"></script>

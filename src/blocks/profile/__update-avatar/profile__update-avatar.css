@@ -1,0 +1,22 @@
+.profile__update-avatar {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 120px;
+    background-color: rgba(0, 0, 0, 0.8);
+    background-image: url(../../../images/update-avatar.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+@media only screen and (max-width: 767px) {
+    .profile__update-avatar {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}

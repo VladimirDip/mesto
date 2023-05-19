@@ -87,7 +87,7 @@ export default class Card {
     this._likeTarget.addEventListener("click", () => this._handleLikeClick());
 
     if (this._owner._id === this._userId) {
-      console.log(this._owner);
+      // console.log(this._owner);
       this._deleteButton.addEventListener("click", (evt) => {
         this._handlerDeleteClick(evt, this._id);
       });

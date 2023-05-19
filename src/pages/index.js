@@ -74,6 +74,7 @@ const renderCard = (data) => {
 
 //--------------Methods for Api----------------//
 const deleteCard = (indent, cardToDelete, submitButton) => {
+  // console.log(submitButton);
   renderLoading(submitButton, "Удаление...");
   return api
     .deleteCard(indent)
@@ -114,7 +115,7 @@ const avatarEditSubmit = ({ avatar_link: avatar }, submitButton) => {
     .setUserAvatar(avatar)
 
     .then((res) => {
-      console.log(res);
+      // console.log(res);
       userInfo.setUserInfo(res);
       popupUpdateAvatar.close();
       renderLoading(submitButton, "Сохранить");
@@ -123,19 +124,20 @@ const avatarEditSubmit = ({ avatar_link: avatar }, submitButton) => {
 };
 
 const cardFormSubmit = ({ name: name, link: link }, submitButton) => {
+  // console.log(submitButton);
   renderLoading(submitButton, "Создание...");
   api
     .addNewCard(name, link)
     .then(({ likes, owner, _id }) => {
       addCard({ name, link, likes, owner, _id }, "prepend");
-      popupAddCard.close();
       renderLoading(submitButton, "Создать");
+      popupAddCard.close();
     })
     .catch(console.error);
 };
 
 const profileFormSubmit = (data, submitButton) => {
-  console.log(data);
+  console.log(submitButton);
   renderLoading(submitButton, "Сохранение...");
   api
     .setUserData(data)

@@ -34,8 +34,6 @@ const api = new Api({
   },
 });
 
-let cardList;
-
 //--------------Create new section on page----------------//
 
 const createCard = (name, link, likes, owner, _id, userId) => {
@@ -44,8 +42,7 @@ const createCard = (name, link, likes, owner, _id, userId) => {
     selectionCardPlace,
     handlerCardClick,
     handlerDeleteClick,
-    likeCard,
-    unlikeCard
+    handleLikesCard
   );
   return card.generateCard();
 };
@@ -63,12 +60,12 @@ const addCard = ({ name, link, likes, owner, _id }, method) => {
   cardList.addItem(card, method);
 };
 
+const cardList = new Section(addCard, cardsBlockSelector);
+
 const renderCard = (data) => {
-  cardList = new Section(
-    { items: data, renderer: addCard },
-    cardsBlockSelector
-  );
-  cardList.setCardFromArray();
+  // console.log("data => ", data);
+
+  cardList.setCardFromArray(data);
 };
 //--------------end Create new section on page----------------//
 
@@ -81,31 +78,28 @@ const deleteCard = (indent, cardToDelete, submitButton) => {
     .then(() => {
       cardToDelete.remove();
       popupDeleteCard.close();
-      renderLoading(submitButton, "Да");
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => renderLoading(submitButton, "Да"));
 };
 
-const likeCard = (indent, likes, likesCount) => {
-  // console.log(indent);
-  return api
-    .likeCard(indent)
-    .then((data) => {
-      likes = data.likes;
-      likesCount.textContent = likes.length;
-    })
-    .catch(console.error);
-};
-
-const unlikeCard = (indent, likes, likesCount) => {
-  // console.log(indent);
-  return api
-    .unlikeCard(indent)
-    .then((data) => {
-      likes = data.likes;
-      likesCount.textContent = likes.length;
-    })
-    .catch(console.error);
+const handleLikesCard = (card) => {
+  if (card.isLiked) {
+    // console.log(card._id);
+    api
+      .unlikeCard(card._id)
+      .then((res) => {
+        card.setLikesInfo(res);
+      })
+      .catch(console.error);
+  } else {
+    api
+      .likeCard(card._id)
+      .then((res) => {
+        card.setLikesInfo(res);
+      })
+      .catch(console.error);
+  }
 };
 
 const avatarEditSubmit = ({ avatar_link: avatar }, submitButton) => {
@@ -118,9 +112,9 @@ const avatarEditSubmit = ({ avatar_link: avatar }, submitButton) => {
       // console.log(res);
       userInfo.setUserInfo(res);
       popupUpdateAvatar.close();
-      renderLoading(submitButton, "Сохранить");
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => renderLoading(submitButton, "Сохранить"));
 };
 
 const cardFormSubmit = ({ name: name, link: link }, submitButton) => {
@@ -130,10 +124,11 @@ const cardFormSubmit = ({ name: name, link: link }, submitButton) => {
     .addNewCard(name, link)
     .then(({ likes, owner, _id }) => {
       addCard({ name, link, likes, owner, _id }, "prepend");
-      renderLoading(submitButton, "Создать");
+
       popupAddCard.close();
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => renderLoading(submitButton, "Создать"));
 };
 
 const profileFormSubmit = (data, submitButton) => {
@@ -145,9 +140,9 @@ const profileFormSubmit = (data, submitButton) => {
       userInfo.setUserInfo({ name, description, ...rest });
 
       popupProfile.close();
-      renderLoading(submitButton, "Сохранить");
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => renderLoading(submitButton, "Сохранить"));
 };
 
 //--------------End Methods for Api----------------//

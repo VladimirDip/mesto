@@ -4,8 +4,7 @@ export default class Card {
     templateSelector,
     handlerCardClick,
     handlerDeleteClick,
-    likeCard,
-    unlikeCard
+    handlerLikeCard
   ) {
     this._image = cardData.link;
     this._title = cardData.name;
@@ -19,8 +18,7 @@ export default class Card {
 
     this._handlerCardClick = handlerCardClick;
     this._handlerDeleteClick = handlerDeleteClick;
-    this._likeCard = likeCard;
-    this._unlikeCard = unlikeCard;
+    this._handlerLikeCard = handlerLikeCard;
   }
 
   _getTemplate() {
@@ -41,41 +39,32 @@ export default class Card {
 
     this._likeTarget = this._element.querySelector(".card__like");
 
-    if (
-      this._likes
-        .map((item) => item._id)
-        .filter((item) => item === this._userId).length === 1
-    ) {
-      this._likeTarget.classList.add("card__like_active");
-    }
+    this.setLikesInfo();
 
     if (this._owner._id === this._userId) {
       this._deleteButton = this._element.querySelector(".card__delete");
       this._deleteButton.classList.remove("card__delete_hidden");
     }
 
-    this._likesCount = this._element.querySelector(".card__like-count");
-    this._likesCount.textContent = this._likes.length;
     this._setEventListenerCards();
 
     return this._element;
   };
 
-  _handleLikeClick = () => {
-    this._likeTarget.classList.toggle("card__like_active");
+  setLikesInfo = (dataCard) => {
+    if (dataCard) {
+      this._likes = dataCard.likes;
+    }
 
-    if (this._likeTarget.classList.contains("card__like_active")) {
-      // console.log(
-      //   "id =>",
-      //   this._id,
-      //   "likes =>",
-      //   this._likes,
-      //   "likesCount =>",
-      //   this._likesCount
-      // );
-      this._likeCard(this._id, this._likes, this._likesCount);
+    this._likesCount = this._element.querySelector(".card__like-count");
+    this._likesCount.textContent = this._likes.length;
+
+    this.isLiked = this._likes.find((elem) => elem._id === this._userId);
+
+    if (this.isLiked) {
+      this._likeTarget.classList.add("card__like_active");
     } else {
-      this._unlikeCard(this._id, this._likes, this._likesCount);
+      this._likeTarget.classList.remove("card__like_active");
     }
   };
 
@@ -84,7 +73,9 @@ export default class Card {
       this._handlerCardClick(this._title, this._image);
     });
 
-    this._likeTarget.addEventListener("click", () => this._handleLikeClick());
+    this._likeTarget.addEventListener("click", () => {
+      this._handlerLikeCard(this);
+    });
 
     if (this._owner._id === this._userId) {
       // console.log(this._owner);
